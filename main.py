@@ -38,6 +38,8 @@ def analyze_code_for_tokens():
     print("Analyzing code for sensitive tokens...\n")
     found_warnings = False
 
+    slack_webhook_url = sys.argv[1]
+
     for token in list_check:
         cmd = f'egrep -nri "{token}" * | grep -v grep | grep -v "main.py" | grep -v "list_check"'
         req = os.popen(cmd).read()
@@ -53,7 +55,7 @@ def analyze_code_for_tokens():
 
             found_warnings = True
             print(warning_message)
-            send_slack_message("<SLACK_WEBHOOK_URL>", token)
+            send_slack_message(slack_webhook_url, token)
 
     print_status_message(found_warnings)
 
