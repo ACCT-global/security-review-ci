@@ -1,9 +1,9 @@
 import os
 import sys
+from time import sleep
 from datetime import datetime
-import requests
 
-# ANSI colors for terminal output
+#colors
 RED = "\033[1;31m"
 GREEN = "\033[0;32m"
 
